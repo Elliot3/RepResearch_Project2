@@ -1,4 +1,5 @@
-# Economic and Population Hardship Related to Severe Weather in the United States
+# Economic and Population Hardship Related to Severe Weather in the United 
+States
 
 
 
@@ -43,15 +44,31 @@ the necessary packages (if applicable):
 setwd("~/Repository/Coursera/RepResearch_Assign2")
 ```
 
-The following code will download the data file from the internet and create a 
-CSV document in the Working Directory:
+===============================================================================
 
+PLEASE NOTE: In my original analysis, I used the following code block to 
+download the file from the Internet:
 
-```r
-download.file(url="https://d396qusza40orc.cloudfront.net/
-repdata%2Fdata%2FStormData.csv.bz2", destfile="Storm_Data.csv.bz2", 
-method="curl")
-```
+url <- "https://d396qusza40orc.cloudfront.net/
+repdata%2Fdata%2FStormData.csv.bz2"
+destfile <- "Storm_Data.csv.bz2"
+download.file(url=url, destfile=destfile, method="curl")
+
+For some reason which I cannot surmise, when I tried running the code again, 
+it does not download the entire file. Instead, it stops after only a second or 
+2 and gives no error message. As a result, I am removing this code from my Doc 
+and will walk through how to perform this process manually.
+
+===============================================================================
+
+The following will be the manual process to download the data file from the 
+internet and create a CSV document in the Working Directory:
+
+1. Paste the following URL into the URL bar (without quotes): "https://
+d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+2. Rename the file (without quotes): "Storm_Data.csv.bz2"
+3. Move the file to the Working Directory (in my case, "~Repository/Coursera/
+RepResearch_Assign2")
 
 Now we will create an R Object from the CSV and only take the columns we will
 use in our analysis:
@@ -59,13 +76,6 @@ use in our analysis:
 
 ```r
 data <- read.csv(bzfile("Storm_Data.csv.bz2"))
-```
-
-```
-## Error in read.table(file = file, header = header, sep = sep, quote = quote, : no lines available in input
-```
-
-```r
 data <- data[,c("BGN_DATE","STATE","EVTYPE","FATALITIES","INJURIES","PROPDMG",
 "PROPDMGEXP","CROPDMG","CROPDMGEXP")]
 ```
@@ -130,7 +140,7 @@ title(xlab="Event Type")
 title(ylab="Damage in Dollars")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 Now I will display the figure which shoes the Events by greatest impact to 
 population health:
@@ -148,6 +158,6 @@ title(xlab="Event Type")
 title(ylab="Number of Deaths")
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
 
 
